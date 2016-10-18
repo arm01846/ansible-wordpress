@@ -1,0 +1,18 @@
+---
+- name: Copy backup file to server
+  copy:
+    src: /tmp/wordpress.sql
+    dest: /tmp/wordpress.sql
+- name: Copy Wordpress config to server
+  become: yes
+  template:
+    src: ../templates/wp-config.j2
+    dest: /var/www/html/wordpress/wp-config.php
+    group: "{{ wordpress_group }}"
+    owner: "{{ wordpress_owner }}"
+- name: Restore Wordpress DB
+  become: yes
+  mysql_db:
+    name: all
+    state: import
+    target: /tmp/wordpress.sql

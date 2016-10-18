@@ -1,0 +1,22 @@
+---
+- name: Create DB
+  become: yes
+  mysql_db:
+    name: "wordpress-site"
+    state: present
+- name: Create DB User  
+  become: yes
+  mysql_user:
+    name: "admin"
+    password: "12345"
+    host: "%"
+    priv: "wordpress-site.*:ALL,GRANT"
+    state: present
+- name: Download Wordpress
+  become: yes
+  unarchive:
+    copy: no
+    src: https://wordpress.org/latest.tar.gz
+    dest: /var/www/html/
+    owner: www-data
+    group: www-data

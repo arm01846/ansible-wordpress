@@ -1,0 +1,7 @@
+---
+- name: Backup wordpress DB
+  hosts: helloworld
+  roles:
+    - server
+    - wordpress
+    - restore-wordpress

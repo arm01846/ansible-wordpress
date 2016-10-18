@@ -1,0 +1,30 @@
+---
+- name: Update Cache
+  become: yes
+  apt:
+    update_cache: yes
+- name: Install PHP5 & Apache
+  become: yes
+  apt:
+    name: php5
+    state: present
+- name: Install Python-MySQL
+  become: yes
+  apt:
+    name: python-mysqldb
+    state: present
+- name: Install PHP-MySQL
+  become: yes
+  apt:
+    name: php5-mysql
+    state: present
+- name: Intall MySQL server
+  become: yes
+  apt:
+    name: mysql-server
+    state: present
+- name: restart Apache server
+  become: yes
+  service:
+    name: apache2
+    state: restarted

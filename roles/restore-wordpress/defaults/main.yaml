@@ -1,0 +1,5 @@
+---
+db_user: admin
+
+wordpress_owner: www-data
+wordpress_group: www-data

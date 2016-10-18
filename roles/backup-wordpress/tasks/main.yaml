@@ -1,0 +1,16 @@
+- name: Dump MySQL
+  become: yes
+  mysql_db:
+    name: all
+    target: /tmp/wordpress.sql
+    state: dump
+- name: Copy Dump files to client
+  fetch:
+    src: /tmp/wordpress.sql
+    dest: /tmp/wordpress.sql
+    flat: yes
+- name: backup wordpress config
+  fetch:
+    src: /var/www/html/wordpress/wp-config.php
+    dest: /tmp/wp-config.php
+    flat: yes
