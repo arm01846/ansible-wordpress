@@ -1,6 +1,6 @@
 ---
 - name: Install Wordpress and MySQL
-  hosts: helloworld
+  hosts: webserver
   roles:
     - server
     - wordpress

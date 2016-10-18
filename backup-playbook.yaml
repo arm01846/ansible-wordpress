@@ -1,5 +1,5 @@
 ---
 - name: Backup wordpress DB
-  hosts: helloworld
+  hosts: webserver
   roles:
     - backup-wordpress
